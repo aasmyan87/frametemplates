@@ -1,0 +1,149 @@
+// Important reset
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+body{
+  margin: 0;
+  padding: 0;
+
+}
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+//  Class Prefix
+$class-prefix: "prefix-";
+
+//  Header
+
+$header__container__width: 1200px;
+$header__container__padding-x: 15px;
+$header-link__transition: .2s linear;
+//
+$default-header__bg-color: #fbfbfb;
+$default-header__box-shadow:  0px 3px 15px -7px rgba(64,64,64,.25);
+//
+$default-header__font-family: Helvetica, Arial, sans-serif; // you can use any other fonts: google font for example
+$default-header__font-size: 16px;
+$default-header__line-height: 1.3;
+$default-header__text__color: #1A1A1A;
+$default-header__link__color: #F49E12;
+$default-header__link-color--hover: #F4C21F;
+//
+$native-menu__header__height: 110px;
+$native-menu__header__height--mobile: 70px;
+//  Logo
+$default-header-logo__desktop-width: 110px;
+$default-header-logo__mob-width: 85px;
+//  Menu Collapse Breakpoint
+$media-before-collapse: 992px;
+$media-after-collapse: $media-before-collapse - 1px;
+//  Animation Settings
+$native-menu__header__scroll-minimize__height: 70px;
+$native-menu__header__scroll-minimize__logo__max-width: 80px;
+$native-menu__header__scroll-minimize__transition: .3s  ease-in-out;
+
+//  Desktop Menu
+
+//  General Menu Settings
+$menu__body__margin-x: 20px;
+//
+$menu__link__font-size: 16px;
+$menu__link__font-weight: normal;
+$menu__link__margin: 3px;
+$menu__link__padding: 15px;
+$menu__link__color: #56A8DE;
+$menu__link__color--hover: #1a1a1a;
+$menu__link__bg-color--hover: #ebebeb;
+$menu__link__height: 100%;
+$menu__link__border-radius: 0;
+$menu__link__border-hover__width: 3px;
+$menu__link__border-hover__color: #56A8DE;
+$menu__link__text-transform: uppercase;
+$menu__link__transition: .2s linear;
+
+//  Sub Menu Settings
+$sub-menu__body__bg-color: #fff;
+$sub-menu__body__width: 250px;
+$sub-menu__body__border-bottom-color: #ebebeb;
+$sub-menu__body__border-bottom-width: 2px;
+//
+$sub-menu__link__font-size: 14px;
+$sub-menu__link__font-weight: normal;
+$sub-menu__link__text-transform: capitalize;
+$sub-menu__link__padding-x: 10px;
+$sub-menu__link__padding-y: 15px;
+$sub-menu__link__color: #56A8DE;
+$sub-menu__link__color--hover: #1a1a1a;
+$sub-menu__link__bg-color--hover: #ebebeb;
+
+//  Mobile Menu
+
+//  General Mobile Menu Settings
+$mobile-menu__head-logo__width: 85px;
+$mobile-menu__head__bg-color: #f5f5f5;
+$mobile-menu__head__border-color: #ebebeb;
+$mobile-menu__head__padding-x: 10px;
+$mobile-menu__head__padding-y: 15px;
+//
+$mobile-menu__body__bg-color: #2B2B2B;
+$mobile-menu__body__width: 320px;
+//
+$mobile-menu__link__font-size: 18px;
+$mobile-menu__link__font-weight: normal;
+$mobile-menu__link__text-transform: uppercase;
+$mobile-menu__link__border-bottom-color: #2f2f2f;
+$mobile-menu__link__padding-y: 15px;
+$mobile-menu__link__padding-x: 15px;
+$mobile-menu__link__color: #ababab;
+$mobile-menu__link__color--hover: #fff;
+$mobile-menu__link__bg-color--hover: #5b5f61;
+$mobile-menu__link__color--focus: #fff;
+//
+$mobile-menu__icon__width: 60px;
+$mobile-menu__icon__color: #ababab;
+$mobile-menu__icon__bg-color: #3C3F41;
+$mobile-menu__icon__bg-color--click: #45494b;
+$mobile-menu__icon-symbol__color--focus: #fff;
+
+//  Mobile Sub Menus Settings
+$mobile-sub-menu__icon__bg-color: #626465;
+$mobile-sub-menu__icon__color: #b2b2b2;
+$mobile-sub-menu__icon__border-radius: 25px;
+$mobile-sub-menu__icon__bg-color--click: #707273;
+$mobile-sub-menu__icon-symbol__color--focus: #ffffff;
+//
+$mobile-sub-menu--first__body__bg-color: #3C3F41;
+$mobile-sub-menu--first__body__indent-left: 25px;
+//
+$mobile-sub-menu--first__link__padding-y: 15px;
+$mobile-sub-menu--first__link__padding-x: 15px;
+$mobile-sub-menu--first__link__font-size: 16px;
+$mobile-sub-menu--first__link__font-weight: normal;
+$mobile-sub-menu--first__link__text-transform: uppercase;
+$mobile-sub-menu--first__link__color: #c1c1c1;
+$mobile-sub-menu--first__link__color--focus: #f4f8ff;
+$mobile-sub-menu--first__link__color--hover: #ffffff;
+$mobile-sub-menu--first__link__border-color: #424242;
+$mobile-sub-menu--first__link__bg-color--hover: #5b5f61;
+//
+$mobile-sub-menu--second__body__bg-color: #626465;
+$mobile-sub-menu--second__body__indent-left: 35px;
+//
+$mobile-sub-menu--second__link__padding-y: 10px;
+$mobile-sub-menu--second__link__padding-x: 15px;
+$mobile-sub-menu--second__link__font-size: 15px;
+$mobile-sub-menu--second__link__font-weight: normal;
+$mobile-sub-menu--second__link__text-transform: capitalize;
+$mobile-sub-menu--second__link__color: #f4f8ff;
+$mobile-sub-menu--second__link__color--focus: #f4f8ff;
+$mobile-sub-menu--second__link__color--hover: #f0fcff;
+$mobile-sub-menu--second__link__bg-color--hover: #5b5f61;
+//
+$mobile-menu__open-button__bg: #56a8de;
+$mobile-menu__open-button__bg--active: #62cc2f;
+$mobile-menu__close-button__bg: #000;
+$mobile-menu__close-button__bg--active: #2b2b2b;
+
+@import "header/header-default";
+@import "menu/desktop-menu-base";
+@import "menu/mobile-menu-base";

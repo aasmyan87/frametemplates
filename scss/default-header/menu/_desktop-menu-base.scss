@@ -1,0 +1,243 @@
+/*Desktop Menu*/
+.#{$class-prefix}menu{
+  //  Menu: Body[Empty Styles - For Mobile]
+  &--nav{
+    //  Menu: Styles
+    display: flex;
+    align-items: center;
+    padding: 0;
+    list-style: none;
+    font-size: $menu__link__font-size;
+    font-weight: $menu__link__font-weight;
+    text-transform: $menu__link__text-transform;
+    margin: 0 $menu__body__margin-x;
+    li{
+      padding: 0;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      ul, li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      a{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        transition: color $menu__link__transition, background-color $menu__link__transition !important;
+      }
+    }
+  }
+  &--nav > li{
+    margin: 0 $menu__link__margin;
+    height: $native-menu__header__height;
+    //  Menu: Item Styles
+    > a{
+      position: relative;
+      padding: 0 $menu__link__padding;
+      height: $menu__link__height;
+      color: $menu__link__color;
+      border-radius: $menu__link__border-radius;
+      &:visited{
+        color: $menu__link__color;
+      }
+      //  Menu: Item Underline Border
+      &::before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 0;
+        margin: auto;
+        height: $menu__link__border-hover__width;
+        background-color: transparent;
+        border-bottom-right-radius: $menu__link__border-radius;
+        border-bottom-left-radius: $menu__link__border-radius;
+        transition: width $menu__link__transition,
+                    background-color $menu__link__transition;
+      }
+    }
+    //  Menu: Item Is Current
+    &.current_page_item{
+      > a{
+        background-color: $menu__link__bg-color--hover;
+        color: $menu__link__color--hover;
+        &::before{
+          width: 100%;
+          background-color: $menu__link__border-hover__color;
+        }
+      }
+    }
+    &:hover{
+      > a{
+        @media screen and (min-width: $media-before-collapse){
+          color: $menu__link__color--hover;
+          background-color: $menu__link__bg-color--hover;
+          //  Menu: Item Underline Border -- Animation
+          &::before{
+            width: 100%;
+            background-color: $menu__link__border-hover__color;
+          }
+        }
+      }
+      //  Menu Sub-First: Expand
+      > ul, > ul > li{
+        @media screen and (min-width: $media-before-collapse){
+          display: block;
+          animation: sub-menu-expand--first .2s 0s linear alternate backwards;
+        }
+      }
+    }
+    //  Menu: Item[has child] Icon
+    &.menu-item-has-children{
+      > a{
+        &::after{
+          content: "\f107";
+          margin-left: 5px;
+          font-family: FontAwesome;
+          transition: transform .2s ease-in-out;
+        }
+      }
+      //  Menu: Item[has child] Icon -- Animation
+      &:hover{
+        > a{
+          &::after{
+            transform: rotate(-180deg);
+            border-color: $menu__link__color--hover;
+          }
+        }
+      }
+    }
+  }
+  &--nav > li > ul > li{
+    > ul{
+        top: 0 !important;
+        left: $sub-menu__body__width - 1px;
+    }
+    &:hover{
+      //  Menu Sub-Second: Expand
+      > ul{
+        @media screen and (min-width: $media-before-collapse){
+          display: block;
+          animation: sub-menu-expand--second .2s 0s linear alternate backwards;
+        }
+      }
+    }
+  }
+  &--sub{
+    //  Menu Sub: Styles
+    position: absolute;
+    display: none;
+    left: 0;
+    font-size: $sub-menu__link__font-size;
+    font-weight: $sub-menu__link__font-weight;
+    text-transform: $sub-menu__link__text-transform;
+    background-color: $sub-menu__body__bg-color;
+    width: $sub-menu__body__width;
+    border-bottom: $sub-menu__body__border-bottom-width solid $sub-menu__body__border-bottom-color;
+    -webkit-box-shadow: 0px 7px 16px -8px rgba(173,173,173,1);
+    -moz-box-shadow: 0px 7px 16px -8px rgba(173,173,173,1);
+    box-shadow: 0px 7px 16px -8px rgba(173,173,173,1);
+    top: $native-menu__header__height;
+    li{
+      //  Menu Sub: Item Styles
+      a{
+        padding: $sub-menu__link__padding-x $sub-menu__link__padding-y;
+        color: $sub-menu__link__color;
+        &:visited{
+          color: $sub-menu__link__color;
+        }
+      }
+      &:hover{
+        > a{
+          @media screen and (min-width: $media-before-collapse){
+            color: $sub-menu__link__color--hover;
+            background-color: $sub-menu__link__bg-color--hover;
+          }
+        }
+      }
+      //  Menu Sub: Item Is Current
+      &.current_page_item{
+        > a{
+          background-color: $sub-menu__link__bg-color--hover;
+          color: $menu__link__color--hover;
+        }
+      }
+    }
+    > li{
+      //  Menu Sub: Item[has child] Icon
+      &.menu-item-has-children{
+        > a{
+          &::after{
+            content: "\f107";
+            font-family: FontAwesome;
+            transform: rotate(-90deg);
+            transition: margin .2s ease-in-out;
+          }
+        }
+        //  Menu Sub: Item[has child] Icon -- Animation
+        &:hover{
+          > a{
+            &::after{
+              margin-right: -3px;
+            }
+          }
+        }
+      }
+    }
+    //  Menu: Display none 3rd Level
+    > li{
+      > ul{
+        li ul,
+        li.menu-item-has-children a::after,
+        li.menu-item-has-children .mobile-menu-icon{
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  //  Mobile Head: Display None
+  &--mobile-head{
+    display: none;
+  }
+}
+
+
+//  Animation: Expand Menu Sub
+@keyframes sub-menu-expand--first {
+  0%{
+    transform: translate(0, -5px);
+    opacity: 0.5;
+  }
+  100%{
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+@keyframes sub-menu-expand--second {
+  0%{
+    transform: translate(-10px, 0);
+    opacity: 0;
+  }
+  100%{
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+//  No Display: Mobile Styles
+.opened-menu-cover,
+.menu-open-btn,
+.mobile-menu-icon,
+.icon-symbol, .icon-symbol::before{
+  display: none;
+}
+
+
+
+

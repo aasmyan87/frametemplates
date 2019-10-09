@@ -1,0 +1,131 @@
+/*Header*/
+.#{$class-prefix}header{
+  font-family: $default-header__font-family;
+  font-size: $default-header__font-size;
+  color: $default-header__text__color;
+  height: $native-menu__header__height;
+  min-height: $native-menu__header__height;
+  background-color: $default-header__bg-color;
+  box-sizing: border-box;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+  line-height: $default-header__line-height;
+  font-weight: normal;
+  z-index: 99999;
+  box-shadow:$default-header__box-shadow;
+  a{
+    color: $default-header__link__color;
+    transition: color $header-link__transition,
+                background-color  $header-link__transition !important;
+    text-decoration: none;
+    &:visited{
+      color: $default-header__link__color;
+    }
+    &:hover{
+      color: $default-header__link-color--hover;
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+  img {
+    max-width: 100%;
+  }
+  &--container{
+    max-width: $header__container__width;
+    padding-left: $header__container__padding-x;
+    padding-right: $header__container__padding-x;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &--inner{
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: $media-after-collapse){
+      justify-content: center;
+    }
+  }
+  @media screen and (max-width: $media-after-collapse){
+    height: $native-menu__header__height--mobile;
+    min-height: $native-menu__header__height--mobile;
+  }
+}
+
+/*Logo*/
+.#{$class-prefix}logo{
+  max-width: $default-header-logo__desktop-width;
+  flex: 0 0 $default-header-logo__desktop-width;
+  a{
+    display: block;
+  }
+  @media screen and (max-width: $media-after-collapse){
+    max-width: $default-header-logo__mob-width;
+    flex: 0 0 $default-header-logo__mob-width;
+  }
+}
+
+// Animations for Header: Sticky Header
+##{$class-prefix}header-id_js{
+  //  Minimize Header Height on scroll
+  &.scroll-down_js, &.scroll-up_js,
+  &.scroll-down_js *, &.scroll-up_js *{
+    @media screen and (min-width: $media-before-collapse){
+      transition: height $native-menu__header__scroll-minimize__transition,
+                  min-height $native-menu__header__scroll-minimize__transition,
+      }
+  }
+  &.scroll-down_js, &.scroll-up_js{
+    position: fixed;
+    animation: header_scroll_fixed .3s .1s cubic-bezier(0.65, 0.05, 0.36, 1) alternate backwards;
+  }
+  &.scroll-down_js, &.scroll-up_js{
+    .#{$class-prefix}logo{
+      @media screen and (min-width: $media-before-collapse){
+        max-width: $native-menu__header__scroll-minimize__logo__max-width;
+        flex: 0 0 $native-menu__header__scroll-minimize__logo__max-width;
+
+      }
+    }
+    @media screen and (min-width: $media-before-collapse){
+      min-height: $native-menu__header__scroll-minimize__height;
+      height: $native-menu__header__scroll-minimize__height;
+    }
+  }
+}
+
+//  Menu Scrolling Header: Change Link Height on Scroll
+##{$class-prefix}header-id_js{
+  &.scroll-down_js, &.scroll-up_js{
+    .#{$class-prefix}menu{
+      &--sub{
+        @media screen and (min-width: $media-before-collapse) {
+          top: $native-menu__header__scroll-minimize__height;
+        }
+      }
+      &--nav > li{
+        @media screen and (min-width: $media-before-collapse) {
+          height: $native-menu__header__scroll-minimize__height;
+        }
+      }
+    }
+  }
+}
+
+@keyframes header_scroll_fixed {
+  0%{
+    transform: translate(0, -$native-menu__header__height);
+    opacity: 0;
+  }
+  100%{
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
